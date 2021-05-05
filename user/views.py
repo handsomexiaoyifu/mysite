@@ -1,16 +1,12 @@
 import string
 import random
 import time
-import json
-from urllib.request import urlopen
-from urllib.parse import urlencode, parse_qs
 from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.http import JsonResponse
 from django.core.mail import send_mail
-from django.conf import settings
 from .forms import LoginForm, RegForm, ChangeNicknameForm, BindEmailForm, ChangePasswordForm, ForgotPasswordForm
 from .models import Profile
 
@@ -137,7 +133,7 @@ def send_verification_code(request):
             send_mail(
                 '绑定邮箱',
                 '验证码：%s' % code,
-                '2872402050@qq.com',
+                '2574551772@qq.com',
                 [email],
                 fail_silently=False,
             )
