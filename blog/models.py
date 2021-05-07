@@ -23,7 +23,7 @@ class Blog(models.Model, ReadNumExpandMethod):
 
     blog_type = models.ForeignKey(BlogType, on_delete=models.DO_NOTHING,verbose_name='博客分类')
 
-    content = RichTextUploadingField()
+    content = RichTextUploadingField(verbose_name='正文')
 
     author = models.ForeignKey(User, on_delete=models.DO_NOTHING,verbose_name='博客作者')
 
@@ -35,6 +35,9 @@ class Blog(models.Model, ReadNumExpandMethod):
 
     def get_url(self):
         return reverse('blog_detail', kwargs={'blog_pk': self.pk})
+
+    def get_user(self):
+        return self.author
 
     def get_email(self):
         return self.author.email

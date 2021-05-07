@@ -3,7 +3,7 @@ from .models import ReadNum, ReadDetail
 
 @admin.register(ReadNum)
 class ReadNumAdmin(admin.ModelAdmin):
-    list_display = ('read_num', 'content_object')
+    list_display = ('content_object','read_num')
 
 @admin.register(ReadDetail)
 class ReadDetailAdmin(admin.ModelAdmin):

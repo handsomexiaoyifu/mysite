@@ -5,11 +5,17 @@ from django.contrib.contenttypes.models import ContentType
 from django.utils import timezone
 
 class ReadNum(models.Model):
-    read_num = models.IntegerField(default=0)
+    read_num = models.IntegerField(default=0,verbose_name='浏览量')
 
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+
     object_id = models.PositiveIntegerField()
+
     content_object = GenericForeignKey('content_type', 'object_id')
+
+    class Meta:
+        verbose_name = '浏览量'
+        verbose_name_plural = '浏览量'  # 复数形式
 
 class ReadNumExpandMethod():
     def get_read_num(self):
@@ -21,9 +27,16 @@ class ReadNumExpandMethod():
             return 0
 
 class ReadDetail(models.Model):
-    date = models.DateField(default=timezone.now)
-    read_num = models.IntegerField(default=0)
+    date = models.DateField(default=timezone.now,verbose_name='日期')
+
+    read_num = models.IntegerField(default=0,verbose_name='浏览量')
 
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+
     object_id = models.PositiveIntegerField()
+
     content_object = GenericForeignKey('content_type', 'object_id')
+
+    class Meta:
+        verbose_name = '单日浏览量'
+        verbose_name_plural = '单日浏览量'  # 复数形式
