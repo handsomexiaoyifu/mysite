@@ -1,0 +1,5 @@
+启动uwsgi
+uwsgi --ini /home/mysite_uwsgi/mysite.ini
+
+重启nginx
+service nginx restart
